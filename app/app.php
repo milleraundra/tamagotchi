@@ -19,6 +19,7 @@
     });
 
     $app->post("/tamagotchi", function() use ($app) {
+        Tamagotchi::deleteAll();
         $new_tamagotchi = new Tamagotchi($_POST['name'], 6, 21, 15);
         $new_tamagotchi->save();
         return $app['twig']->render('tamagotchi_status.html.twig', array('new_tamagotchi' => $new_tamagotchi));
@@ -28,7 +29,7 @@
         $tamagotchi = Tamagotchi::getAll();
         $my_food = $tamagotchi[0]->getFood();
         $tamagotchi[0]->setFood($my_food + 6);
-        return $app['twig']->render('fed.html.twig');
+        return $app['twig']->render('tamagotchi_status.html.twig', array('new_tamagotchi' => $tamagotchi[0]));
     });
 
 

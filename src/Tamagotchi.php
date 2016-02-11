@@ -64,6 +64,11 @@ class Tamagotchi {
         return $_SESSION['living_tamagotchi'];
     }
 
+    static function deleteAll()
+    {
+        $_SESSION['living_tamagotchi'] = array();
+    }
+
 }
 
 ?>
